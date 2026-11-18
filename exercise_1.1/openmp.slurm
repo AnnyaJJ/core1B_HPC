@@ -8,6 +8,7 @@
 #SBATCH -t 00:01:00
 #SBATCH -p shared
 module load gcc
+gcc -fopenmp -o hello-openmp openmp.c
 # unnecessary, since we've specified --cores=2 above
 export OMP_NUM_THREADS=2
 ./hello-openmp
