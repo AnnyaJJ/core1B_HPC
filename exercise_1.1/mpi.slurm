@@ -10,6 +10,6 @@
 module load gcc
 module load openmpi
 mpicc -o hello-mpi mpi.c
-mpirun -np 2 ./hello-mpi
+mpirun ./hello-mpi
 
 
