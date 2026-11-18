@@ -1,6 +1,6 @@
 #!/bin/bash
 # 1 node
-#SBATCH --nodes=1
+#SBATCH --nodes=2
 #SBATCH --ntasks-per-node=2
 #SBATCH --job-name="hello-mpi"
 #SBATCH -o hello-mpi.%J.out
