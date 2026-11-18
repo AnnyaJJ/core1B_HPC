@@ -8,7 +8,7 @@ int main(void)
 #pragma omp parallel private(thread) shared(nthread)
   {
     thread = omp_get_thread_num();
-    if (nthread == indexh)
+    if (thread == indexh)
     printf("Hello, World! I am thread %d of %d\n", thread, nthread);
   }
   return 0;
