@@ -7,6 +7,7 @@
 #SBATCH -t 00:01:00
 #SBATCH -p test
 module load gcc
+gcc serial.c -o hello-serial
 ./hello-serial
 
 
