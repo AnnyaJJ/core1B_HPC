@@ -9,7 +9,7 @@ int main(void)
   {
     thread = omp_get_thread_num();
     if (thread == indexh)
-    printf("Hello, World! I am thread %d of %d\n", thread, nthread);
+    printf("Hello, World!!!! I am thread %d of %d\n", thread, nthread);
   }
   return 0;
 }
