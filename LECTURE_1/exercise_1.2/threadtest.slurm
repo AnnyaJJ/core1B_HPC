@@ -10,6 +10,7 @@
 
 module load gcc
 gcc -fopenmp -o threadtest threadtest.c
+export OMP_NUM_THREADS=4
 ./threadtest
 
 
