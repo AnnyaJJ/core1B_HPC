@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SBATCH --nodes=1
-#SBATCH --cores=4
+#SBATCH --cores=10
 #SBATCH --job-name="threadtest"
 #SBATCH -o threadtest.%J.out
 #SBATCH -e threadtest.%J.err
@@ -10,7 +10,7 @@
 
 module load gcc
 gcc -fopenmp -o threadtest threadtest.c
-export OMP_NUM_THREADS=4
+export OMP_NUM_THREADS=10
 ./threadtest
 
 

@@ -3,11 +3,17 @@
 
 int main() {
 
-  printf("Thread #%d reports: This program uses %d threads.\n",
-         omp_get_thread_num(), omp_get_num_threads());
-
 #pragma omp parallel
-  printf("Hello world from thread #%d\n", omp_get_thread_num());
+  {
+    int id = omp_get_thread_num();
+
+    printf("Hello world from thread #%d\n", id);
+
+    if (id == 5) {
+      printf("Thread #%d reports: This program uses %d threads.\n",
+             id, omp_get_num_threads());
+    }
+  }
 
   return 0;
 }
