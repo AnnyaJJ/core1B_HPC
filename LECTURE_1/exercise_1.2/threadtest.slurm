@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SBATCH --nodes=1
-#SBATCH --cores=2
+#SBATCH --cores=4
 #SBATCH --job-name="threadtest"
 #SBATCH -o threadtest.%J.out
 #SBATCH -e threadtest.%J.err
