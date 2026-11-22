@@ -10,5 +10,6 @@
 
 module load gcc
 gcc -fopenmp -o threadtest threadtest.c
-./treadtest
+./threadtest
+
 
