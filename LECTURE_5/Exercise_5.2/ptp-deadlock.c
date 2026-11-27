@@ -24,10 +24,10 @@ int main(int argc, char **argv)
 	}
 
 	if (rank == 0) {
-		MPI_Send(sendbuf, nentries, MPI_INT, 1, 0, MPI_COMM_WORLD);
+		MPI_SSend(sendbuf, nentries, MPI_INT, 1, 0, MPI_COMM_WORLD);
 		MPI_Recv(recvbuf, nentries, MPI_INT, 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 	} else if (rank == 1) {
-		MPI_Send(sendbuf, nentries, MPI_INT, 0, 0, MPI_COMM_WORLD);
+		MPI_SSend(sendbuf, nentries, MPI_INT, 0, 0, MPI_COMM_WORLD);
 		MPI_Recv(recvbuf, nentries, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 	}
 
