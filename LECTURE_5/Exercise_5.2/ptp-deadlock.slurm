@@ -3,8 +3,8 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=2
 #SBATCH --job-name="ptp-deadlock"
-#SBATCH -o core1B_HPC/LECTURE_5/Exercise_5.2/ptp-deadlock.%J.out
-#SBATCH -e core1B_HPC/LECTURE_5/Exercise_5.2/ptp-deadlock.%J.err
+#SBATCH -o ptp-deadlock.%J.out
+#SBATCH -e ptp-deadlock.%J.err
 #SBATCH -t 00:10:00
 #SBATCH -p shared
 
