@@ -9,6 +9,10 @@ static void ping_pong(void *buffer, int count, MPI_Datatype dtype, MPI_Comm comm
 	* rank 1 should then send the received data back to rank 0
 	*
 	*/
+	MPI_send()
+
+
+
 }
 
 int main(int argc, char **argv){
