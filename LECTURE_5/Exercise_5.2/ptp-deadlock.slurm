@@ -5,11 +5,18 @@
 #SBATCH --job-name="ptp-deadlock"
 #SBATCH -o ptp-deadlock.%J.out
 #SBATCH -e ptp-deadlock.%J.err
-#SBATCH -t 00:01:00
+#SBATCH -t 00:10:00
 #SBATCH -p shared
 
 module load gcc openmpi
+mpicc -o ptp-deadlock ptp-deadlock.c
 
-mpicc -optp-deadlock ptp-deadlock.c
-mpirun -n 2 .ptp-deadlock <nentries>
+for n in 1 2 4 8 16 32 64 128 256 512 1024 2048 4096 8192 16384 32768 65536 131072; do
+    echo "Probando nentries = $n"
+    timeout 10 mpirun -n 2 ./ptp-deadlock $n
+    if [ $? -ne 0 ]; then
+        echo ">>> Falló o se colgó con nentries = $n"
+        break
+    fi
+done
 
