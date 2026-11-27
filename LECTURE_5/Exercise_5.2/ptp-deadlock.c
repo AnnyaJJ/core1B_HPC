@@ -23,13 +23,11 @@ int main(int argc, char **argv)
 		sendbuf[i] = rank;
 	}
 
-	if (rank == 0) {
-		MPI_SSend(sendbuf, nentries, MPI_INT, 1, 0, MPI_COMM_WORLD);
-		MPI_Recv(recvbuf, nentries, MPI_INT, 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-	} else if (rank == 1) {
-		MPI_SSend(sendbuf, nentries, MPI_INT, 0, 0, MPI_COMM_WORLD);
-		MPI_Recv(recvbuf, nentries, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-	}
+	int other = 1 - rank;   // el rank del otro proceso (con 2 procesos: 0↔1)
+
+	MPI_Sendrecv(sendbuf, nentries, MPI_INT, other, 0,
+             recvbuf, nentries, MPI_INT, other, 0,
+             MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
 	printf("[%d] First entry of sendbuf is %d; first of recvbuf is %d\n", rank, sendbuf[0], recvbuf[0]);
 	MPI_Finalize();
